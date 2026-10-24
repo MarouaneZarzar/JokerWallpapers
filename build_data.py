@@ -2,7 +2,7 @@
 
     full/<n>.jpg     original image, copied unchanged
     thumbs/<n>.webp  small preview for the grid
-    wallpapers.json  the list the app reads (newest first)
+    wallpapers.json  the list the app reads (in number order)
 
 To add wallpapers: drop new numbered images (101.jpg, 102.jpg, ...) into
 source/, run `python build_data.py`, then commit and push.
@@ -50,7 +50,6 @@ def main():
             "thumb": f"thumbs/{thumb.name}",
         })
 
-    wallpapers.reverse()  # newest first
     with open(ROOT / "wallpapers.json", "w", encoding="utf-8") as f:
         json.dump({"version": 1, "wallpapers": wallpapers}, f, indent=2)
 
