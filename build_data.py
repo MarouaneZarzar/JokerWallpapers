@@ -21,6 +21,9 @@ FULL = ROOT / "full"
 THUMBS = ROOT / "thumbs"
 THUMB_WIDTH = 400
 THUMB_QUALITY = 75
+# versionCode of the newest app release on Google Play. Raise it AFTER a new
+# version is live on Play; older app versions then show "Update Available".
+LATEST_VERSION = 23
 
 
 def main():
@@ -51,7 +54,7 @@ def main():
         })
 
     with open(ROOT / "wallpapers.json", "w", encoding="utf-8") as f:
-        json.dump({"version": 1, "wallpapers": wallpapers}, f, indent=2)
+        json.dump({"version": 1, "latestVersion": LATEST_VERSION, "wallpapers": wallpapers}, f, indent=2)
 
     print(f"{len(wallpapers)} wallpapers written to wallpapers.json")
 
